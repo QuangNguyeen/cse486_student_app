@@ -72,4 +72,7 @@ class SinhVienController extends Controller
         return view('sinhviens.show', compact('sinhvien', 'ketqua'));
 
     }
+
+
+    
 }

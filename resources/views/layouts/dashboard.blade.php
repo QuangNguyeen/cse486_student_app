@@ -50,12 +50,12 @@
             <h2>Thuyloi University</h2>
             <nav class="mt-4">
                 <ul class="list-unstyled menu-list">
-                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="{{route ('sinhviens.index')}}">Dashboard</a></li>
                     <li><a href="#">Thông tin sinh viên</a></li>
                     <li><a href="#">Thống kê điểm</a></li>
                     <li><a href="#">Kỷ luật</a></li>
-                    <li><a href="#">Khen thưởng</a></li>
-                    <li><a href="#">Học phí</a></li>
+                    <li><a href="{{ route('hocbong.index') }}">Khen Thưởng</a></li> <!-- Thêm dòng này -->
+                    <li><a href="{{ route('hocphi.index') }}">Học phí</a></li>
                     <li><a href="#">Settings</a></li>
                 </ul>
             </nav>
