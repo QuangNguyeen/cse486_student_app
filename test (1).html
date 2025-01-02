@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Thông tin sinh viên</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f9fafc;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            border-right: 1px solid #ddd;
+            padding: 20px;
+        }
+
+        .sidebar h1 {
+            font-size: 20px;
+            color: #0056d2;
+            margin-bottom: 20px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .menu-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .menu-item i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+        .menu-item span {
+            font-size: 16px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .content-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .content-header input {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .content-header select {
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        .content-header button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0056d2;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .content-header button:hover {
+            background-color: #003f9a;
+        }
+
+        .chart-container {
+            width: 100%;
+            margin: 0 auto 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px; /* Bo tròn cả 4 góc */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th,
+        .table td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table th {
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+        .table tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        .table a {
+            color: #0056d2;
+            text-decoration: none;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- Sidebar -->
+<div class="sidebar">
+    <h1>Thuyloi University</h1>
+    <a href="#" class="menu-item">
+        <i class="fas fa-home"></i>
+        <span>Trang chủ</span>
+    </a>
+    <a href="#" class="menu-item">
+        <i class="fas fa-user"></i>
+        <span>Thông tin sinh viên</span>
+    </a>
+    <a href="#" class="menu-item">
+        <i class="fas fa-chart-bar"></i>
+        <span>Thống kê điểm</span>
+    </a>
+    <a href="#" class="menu-item">
+        <i class="fas fa-graduation-cap"></i>
+        <span>Kỷ luật</span>
+    </a>
+    <a href="#" class="menu-item">
+        <i class="fas fa-award"></i>
+        <span>Khen thưởng</span>
+    </a>
+    <a href="#" class="menu-item">
+        <i class="fas fa-dollar-sign"></i>
+        <span>Học phí</span>
+    </a>
+    <a href="#" class="menu-item">
+        <i class="fas fa-cog"></i>
+        <span>Cài đặt</span>
+    </a>
+</div>
+
+<!-- Content -->
+<div class="content">
+    <div class="content-header">
+        <input type="text" placeholder="Nhập mã sinh viên">
+        <select name="major" id="major">
+            <option value="">Chọn ngành</option>
+            <option value="ktpm">Kỹ thuật phần mềm</option>
+            <option value="mm">Mạng máy tính</option>
+            <option value="attt">An toàn thông tin</option>
+            <option value="cntt">Công nghệ thông tin</option>
+        </select>
+        <button type="button">Tìm kiếm</button>
+    </div>
+
+    <div class="chart-container" style="height: 300px; width: 100%;">
+        <canvas id="studentChart"></canvas>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Mã SV</th>
+            <th>Họ</th>
+            <th>Tên</th>
+            <th>Lớp</th>
+            <th>SDT</th>
+            <th>Trạng thái</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><a href="#">2251172466</a></td>
+            <td>Nguyễn Văn</td>
+            <td>Quang</td>
+            <td>64KTPM2</td>
+            <td>0977038592</td>
+            <td>Đang học</td>
+        </tr>
+        <tr>
+            <td><a href="#">2251172466</a></td>
+            <td>Nguyễn Văn</td>
+            <td>Quang</td>
+            <td>64KTPM2</td>
+            <td>0977038592</td>
+            <td>Đang học</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    const ctx = document.getElementById('studentChart').getContext('2d');
+    const studentChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Xuất sắc', 'Giỏi', 'Khá', 'Trung bình'],
+            datasets: [{
+                label: 'Số lượng sinh viên',
+                data: [30, 20, 15, 35],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: 'Phân bố sinh viên theo GPA'
+                }
+            },
+            layout: {
+                padding: {
+                    left: 0,
+                    right: 0,
+                    top: 10,
+                    bottom: 10
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
