@@ -96,14 +96,7 @@
         font-weight: bold;
     }
 
-    footer {
-        margin-top: 20px;
-        padding: 10px 20px;
-        background-color: #343a40;
-        color: white;
-        text-align: center;
-        font-size: 14px;
-    }
+
 </style>
 
 

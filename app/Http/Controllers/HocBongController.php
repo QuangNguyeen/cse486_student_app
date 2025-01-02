@@ -20,6 +20,8 @@ class HocBongController extends Controller
         // Gọi stored procedure sp_ThongKeSinhVienHocBong
         $sinhViens = DB::select('EXEC sp_ThongKeSinhVienHocBong ?, ?', [$masv, $kyHoc]);
 
+
+      
         return response()->json($sinhViens); // Trả về dữ liệu dưới dạng JSON
     }
 }

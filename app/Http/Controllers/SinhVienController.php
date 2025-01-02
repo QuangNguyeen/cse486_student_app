@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\SinhVien;
 use App\Models\HocPhi;
 use App\Models\Ketqua;
+use Illuminate\Support\Facades\DB;
+
 class SinhVienController extends Controller
 {
     public function index()
@@ -23,8 +25,8 @@ class SinhVienController extends Controller
 
     
         // Xóa dữ liệu liên quan trong bảng `HocPhi` và `Ketqua`
-        HocPhi::where('MASV', $sinhvien->MASV)->delete();
-        Ketqua::where('MASV', $sinhvien->MASV)->delete();
+        HocPhi::where('MASV', (string) $sinhvien->MASV)->delete();
+        Ketqua::where('MASV', (string) $sinhvien->MASV)->delete();
     
         // Sau đó xóa sinh viên
         $sinhvien->delete();
@@ -62,17 +64,33 @@ class SinhVienController extends Controller
 
     public function show($id)
     {
-        $sinhvien = SinhVien::findOrFail($id);
-        $ketqua = Ketqua::where('MASV', $sinhvien->MASV)
-        ->join('MONHOC', 'KETQUA.MAMH', '=', 'MONHOC.MAMH')
-        ->select('MONHOC.TENMH', 'KETQUA.DIEM', 'KETQUA.KiHOC')
-        ->get();
-
-      //  dd($ketqua);
+        // Lấy thông tin sinh viên từ bảng vw_ThongTinSinhVien
+            $sinhvien = DB::table('vw_ThongTinSinhVien')
+            ->where('MASV', $id) // Lọc theo mã sinh viên
+            ->select('HoSV', 'TenSV','MASV' ,'GioiTinh', 'DiaChi','MALOP', 'SDT')
+            ->first();
+    
+        if (!$sinhvien) {
+            abort(404, 'Sinh viên không tồn tại');
+        }
+    
+        // Lấy kết quả học tập của sinh viên từ view vw_ThongTinSinhVien
+            $ketqua = DB::table('vw_ThongTinSinhVien')
+            ->where('MASV', $id) // Lọc theo mã sinh viên
+            ->select('TenMH', 'Diem', 'KiHoc')
+            ->get();
+    
+        // Trả về view với dữ liệu
         return view('sinhviens.show', compact('sinhvien', 'ketqua'));
-
     }
+    
 
+
+    public function updateStatus()
+    {
+        SinhVien::capNhatTrangThai();
+        return redirect()->route('sinhviens.index')->with('success', 'Cập nhật trạng thái sinh viên thành công!');
+    }
 
     
 }

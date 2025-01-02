@@ -14,11 +14,11 @@
         <!-- Thông tin cá nhân của sinh viên -->
         <div class="card mb-4">
             <div class="card-body">
-                <h4 class="card-title">Họ tên: {{ $sinhvien->HOSV }} {{ $sinhvien->TENSV }}</h4>
+                <h4 class="card-title">Họ tên: {{ $sinhvien->HoSV }} {{ $sinhvien->TenSV }}</h4>
                 <p><strong>Mã sinh viên:</strong> {{ $sinhvien->MASV }}</p>
                 <p><strong>Lớp:</strong> {{ $sinhvien->MALOP }}</p>
-                <p><strong>Giới tính:</strong> {{ $sinhvien->GIOITINH }}</p>
-                <p><strong>Địa chỉ:</strong> {{ $sinhvien->DIACHI }}</p>
+                <p><strong>Giới tính:</strong> {{ $sinhvien->GioiTinh }}</p>
+                <p><strong>Địa chỉ:</strong> {{ $sinhvien->DiaChi }}</p>
                 <p><strong>Số điện thoại:</strong> {{ $sinhvien->SDT }}</p>
             </div>
         </div>
@@ -37,9 +37,9 @@
                 @forelse  ($ketqua as $item)
             
                     <tr>
-                        <td>{{ $item->TENMH }}</td>
-                        <td>{{ $item->DIEM }}</td>
-                        <td>{{ $item->KiHOC }}</td>
+                        <td>{{ $item->TenMH }}</td>
+                        <td>{{ $item->Diem }}</td>
+                        <td>{{ $item->KiHoc }}</td>
                     </tr>
                 @empty
                     <tr>

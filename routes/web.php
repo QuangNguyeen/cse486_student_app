@@ -5,8 +5,13 @@ use App\Http\Controllers\SinhVienController;
 use App\Http\Controllers\HocPhiController;
 use App\Http\Controllers\HocBongController;
 
+use App\Http\Controllers\KyluatController;
 
-Route::get('/', [SinhVienController::class, 'index'])->name('sinhviens.index');
+
+//dashboard
+
+//thông tin sinh viên 
+Route::get('/sinhvien', [SinhVienController::class, 'index'])->name('sinhviens.index');
 
 Route::delete('/sinhvien/{id}', [SinhVienController::class, 'destroy'])->name('sinhviens.destroy');
 
@@ -15,6 +20,8 @@ Route::put('/sinhvien/{id}', [SinhVienController::class, 'update'])->name('sinhv
 
 
 Route::get('/sinhvien/{id}', [SinhVienController::class, 'show'])->name('sinhviens.show');
+//cap nhat trang thai sinh vien
+Route::get('/api/sinhvien', [SinhVienController::class, 'updateStatus'])->name('sinhvien.trangthai');
 
 
 //học phí
@@ -28,3 +35,22 @@ Route::get('/hocphi/tinh', [HocPhiController::class, 'tinhHocPhi'])->name('hocph
 //học bổng
 Route::get('/hocbong', [HocBongController::class, 'index']) ->name('hocbong.index');;
 Route::get('/api/hocbong', [HocBongController::class, 'getThongKe']); 
+
+
+
+
+
+//homepage
+Route::get('/', function () {
+    return view('/homepages.index');
+})->name('homepage');
+
+//kyluat 
+
+// Route::get('/kyluat', function () {
+//     return view('/kyluats.index');
+// })->name('kyluat');
+
+
+
+Route::get('/kyluat', [KyluatController::class, 'index'])->name('kyluat.index');

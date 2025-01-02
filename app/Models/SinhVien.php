@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class SinhVien extends Model
 {
@@ -29,6 +30,24 @@ class SinhVien extends Model
         return $this->hasMany(Ketqua::class, 'masv', 'masv');
     }
 
+    public static function capNhatTrangThai()
+    {
+        // Lấy danh sách tất cả sinh viên
+        $sinhviens = DB::table('sinhvien')->get();
+
+        foreach ($sinhviens as $sinhvien) {
+            // Gọi hàm ufn_TinhSoTinChiNo
+            $soTinChiNo = DB::selectOne("SELECT dbo.ufn_TinhSoTinChiNo(?) AS sotinchino", [$sinhvien->MASV])->sotinchino;
+
+            // Xác định trạng thái
+            $trangThai = $soTinChiNo >= 27 ? 0: 1;
+
+            // Cập nhật trạng thái
+            DB::table('sinhvien')
+                ->where('MASV', $sinhvien->MASV)
+                ->update(['trangthai' => $trangThai]);
+        }
+    }
     
 }
 

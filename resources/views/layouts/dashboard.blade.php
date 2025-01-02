@@ -16,6 +16,8 @@
             color: white;
             height: 100vh;
             padding: 20px;
+            background-color: #343a40;
+
         }
 
         .sidebar h2 {
@@ -29,8 +31,13 @@
         }
 
         .sidebar a {
-            color: black;
+            color: white;
             text-decoration: none;
+        }
+        .sidebar a:hover{
+            background-color: #495057;
+            
+
         }
 
         .sidebar a:hover {
@@ -49,15 +56,15 @@
         <div class="sidebar">
             <h2>Thuyloi University</h2>
             <nav class="mt-4">
-                <ul class="list-unstyled menu-list">
-                    <li><a href="{{route ('sinhviens.index')}}">Dashboard</a></li>
-                    <li><a href="#">Thông tin sinh viên</a></li>
+                <mul class="list-unstyled menu-list">
+                    <li><a href="{{route ('homepage')}}">Dashboard</a></li>
+                    <li><a href="{{route ('sinhviens.index')}}">Thông tin sinh viên</a></li>
                     <li><a href="#">Thống kê điểm</a></li>
-                    <li><a href="#">Kỷ luật</a></li>
+                    <li><a href="{{ route('kyluat.index') }}">Kỷ luật</a></li>
                     <li><a href="{{ route('hocbong.index') }}">Khen Thưởng</a></li> <!-- Thêm dòng này -->
                     <li><a href="{{ route('hocphi.index') }}">Học phí</a></li>
-                    <li><a href="#">Settings</a></li>
-                </ul>
+
+                </mul>
             </nav>
         </div>
 

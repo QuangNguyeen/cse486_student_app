@@ -98,7 +98,7 @@
     </style>
 </head>
 <body>
-    <h1>Thống Kê Sinh Viên Học Bổng</h1>
+    <h1>Sinh Viên Học Bổng</h1>
     <form id="hocbong-form">
         <label for="masv">Mã Sinh Viên:</label>
         <input type="text" id="masv" name="masv" required>
@@ -106,20 +106,25 @@
         <label for="kyHoc">Kỳ Học:</label>
         <input type="text" id="kyHoc" name="kyHoc" required>
         
-        <button type="submit">Thống Kê</button>
+        <button type="submit">Tìm</button>
     </form>
 
     <h2>Kết Quả:</h2>
     <table id="result-table" border="1">
         <thead>
             <tr>
-                <th>Mã SV</th>
+        
                 <th>Họ SV</th>
                 <th>Tên SV</th>
                 <th>GPA</th>
                 <th>Số Tiền Học Bổng</th>
+
+
             </tr>
         </thead>
+
+
+        
         <tbody>
             <!-- Dữ liệu sẽ được thêm vào đây -->
         </tbody>
@@ -148,7 +153,7 @@
                             // Thêm dữ liệu vào bảng
                             $.each(data, function(index, sinhVien) {
                                 tbody.append('<tr>' +
-                                    '<td>' + sinhVien.MASV + '</td>' +
+                                 
                                     '<td>' + sinhVien.HOSV + '</td>' +
                                     '<td>' + sinhVien.TENSV + '</td>' +
                                     '<td>' + sinhVien.GPA + '</td>' +

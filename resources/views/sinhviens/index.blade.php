@@ -6,6 +6,14 @@
 <div class="container mt-4">
     <div class="header">
         <h1>Danh sách sinh viên</h1>
+        <div class ="d-flex">
+        <a href="{{ route('sinhvien.trangthai') }}" class="btn btn-primary">
+            Cập nhật trạng thái sinh viên
+        </a>
+        <a href="{{ route('sinhvien.trangthai') }}" class="btn btn-success">
+           Thêm
+        </a>
+        </div>
         <input type="text" class="form-control search" placeholder="Tìm kiếm...">
     </div>
     <div class="table-container">
@@ -22,7 +30,8 @@
                         <th scope="col">Tên SV</th>
                         <th scope="col">Mã Lớp</th>
                         <th scope="col">SĐT</th>
-                        <th scope="col">Trạng thái</th>
+                        <th scope="col">Trang thai</th>
+
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -35,12 +44,13 @@
                             <td>{{ $sv->MALOP }}</td>
                             <td>{{ $sv->SDT }}</td>
                             <td>
-                                <span class="badge {{ $sv->TRANGTHAI == 'Đang học' ? 'bg-success' : 'bg-danger' }}">
-                                    {{ $sv->TRANGTHAI }}
+                                <span class="badge {{ $sv->TRANGTHAI == 1 ? 'bg-success' : 'bg-danger' }}">
+                                {{ $sv->TRANGTHAI == 1 ? 'Đang học' : 'Thôi học' }}
                                 </span>
                             </td>
                             <td class="d-flex">
-                                <a href="{{ route('sinhviens.edit', $sv->MASV) }}"><button type="button" class="btn btn-primary me-2">Sửa</button></a>
+                                <a href="{{ route('sinhviens.edit', $sv->MASV) }}"><button type="button"
+                                        class="btn btn-primary me-2">Sửa</button></a>
                                 <form action="{{ route('sinhviens.destroy', $sv->MASV) }}" method="POST"
                                     onsubmit="return confirm('Bạn có chắc chắn muốn xóa sinh viên này không?')">
                                     @csrf
