@@ -12,6 +12,8 @@ Route::get('/thongke/ketquas/create', [KetQuaController::class, 'create'])->name
 Route::post('/thongke/ketquas', [KetQuaController::class, 'store'])->name('thongke.ketquas.store');
 Route::get('/thongke/lop/{malop}/sinhvien', [LopController::class, 'danhSachSinhVien'])->name('lop.sinhvien');
 Route::get('/thongke/lop/{malop}/sinhvien/{id}', [KetQuaController::class, 'danhSachKetQua'])->name('thongke.ketquas');
+Route::get('/thongke/lop/{malop}/sinhvien/{id}/create', [KetQuaController::class, 'create'])->name('thongke.ketquas.create');
+
 
 
 

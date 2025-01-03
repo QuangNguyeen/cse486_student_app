@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="content-header">
-        <input type="text" placeholder="Nhập mã sinh viên">
+        <input type="text" placeholder="Nhập mã môn học">
         <button type="button">Tìm kiếm</button>
-        <button type="button" class="btn-nhap-diem">Nhập Điểm</button>
+        <a href="{{ route('thongke.ketquas.create', ['malop' => $lop->MALOP, 'id' => $sinhvien->MASV]) }}" class="btn-nhap-diem">Nhập Điểm</a>
     </div>
     <table class="table">
         <thead>

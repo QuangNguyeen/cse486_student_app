@@ -4,6 +4,7 @@
     <div class="content-header">
         <input type="text" placeholder="Nhập mã sinh viên">
         <button type="button">Tìm kiếm</button>
+
     </div>
     <table class="table">
         <thead>
