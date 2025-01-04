@@ -41,4 +41,11 @@
             </div>
         </a>
     </div>
+    <div class="carditem">
+        <a href="{{ route('totnghiep') }}" class="text-decoration-none">
+            <div class="card card-hover">
+                <p class="card-title">Tốt nghiệp</p>
+            </div>
+        </a>
+    </div>
 </div>

@@ -103,13 +103,15 @@
 <body>
     <div class="row">
         <div class="col-md-3 mt-0">
-            <h3 class="text-center mb-4">ThuyLoi university</h3>
+            <h3 class="text-center mb-4" style="color: #0056d2">ThuyLoi university</h3>
             <a href="{{route ('homepage')}}">Dashboard</a>
             <a href="{{route ('sinhviens.index')}}">Thông tin sinh viên</a>
             <a href="{{route ('thongke.index')}}">Thống kê điểm</a>
             <a href="{{route ('kyluat.index')}}">Kỷ luật</a>
             <a href="{{ route('hocbong.index') }}">Khen thưởng</a>
             <a href="{{ route('hocphi.index') }}">Học phí</a>
+           <a href="{{ route('totnghiep') }}">Tốt nghiệp</a>
+
         </div>
 
         <div class="col-md-9 mt-3 main-content">

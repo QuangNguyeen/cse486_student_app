@@ -8,7 +8,8 @@ use App\Http\Controllers\HocBongController;
 use App\Http\Controllers\KyluatController;
 use App\Http\Controllers\ThongKeController;
 use App\Http\Controllers\KetQuaController;
-use App\Http\Controllers\LopController;
+use App\Http\Controllers\LopController; 
+use App\Http\Controllers\TotNghiepController;
 //dashboard
 
 //thông tin sinh viên 
@@ -56,6 +57,9 @@ Route::get('/kyluat', [KyluatController::class, 'index'])->name('kyluat.index');
 Route::get('/totnghiep', function(){
 return view('/totnghieps.index');
 })->name('totnghiep');
+
+//getThongKeTotNghiep
+Route::get('/api/totnghiep', [TotNghiepController::class, 'getThongKeTotNghiep'])->name('totnghiep.statistical');
 
 
 //thống kê 

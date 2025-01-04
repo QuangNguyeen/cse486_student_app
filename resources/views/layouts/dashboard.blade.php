@@ -36,18 +36,20 @@
             color: white;
             text-decoration: none;
         }
-        .sidebar a:hover{
-            background-color: #495057;
-            
-
-        }
+       
 
         .sidebar a:hover {
             text-decoration: underline;
+            text-decoration: none;
+
         }
 
         .menu-list li {
             margin-bottom: 20px;
+        }
+        .menu-list li:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
         }
     </style>
 </head>
