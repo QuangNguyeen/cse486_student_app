@@ -6,8 +6,9 @@ use App\Http\Controllers\HocPhiController;
 use App\Http\Controllers\HocBongController;
 
 use App\Http\Controllers\KyluatController;
-
-
+use App\Http\Controllers\ThongKeController;
+use App\Http\Controllers\KetQuaController;
+use App\Http\Controllers\LopController;
 //dashboard
 
 //thông tin sinh viên 
@@ -28,9 +29,9 @@ Route::get('/api/sinhvien', [SinhVienController::class, 'updateStatus'])->name('
 
 // Hiển thị giao diện tra cứu học phí
 Route::get('/hocphi', [HocPhiController::class, 'index'])->name('hocphi.index');
-
 // Tính học phí
 Route::get('/hocphi/tinh', [HocPhiController::class, 'tinhHocPhi'])->name('hocphi.tinh');
+
 
 //học bổng
 Route::get('/hocbong', [HocBongController::class, 'index']) ->name('hocbong.index');;
@@ -43,18 +44,26 @@ Route::get('/statistical', function () {
 Route::get('/api/statistical', [HocBongController::class, 'getThongKeAll'])->name('hocbong.statistical');
 
 
-
-
-
 //homepage
 Route::get('/', function () {
     return view('/homepages.index');
 })->name('homepage');
 
 //kyluat 
-
-
-
-
-
 Route::get('/kyluat', [KyluatController::class, 'index'])->name('kyluat.index');
+
+//thống kê sinh viên tốt nghiệp
+Route::get('/totnghiep', function(){
+return view('/totnghieps.index');
+})->name('totnghiep');
+
+
+//thống kê 
+
+Route::get('/thongke', [ThongKeController::class, 'index'])->name('thongke.index');
+Route::get('/thongke/ketquas', [KetQuaController::class, 'index'])->name('thongke.ketquas.index');
+Route::get('/thongke/ketquas/create', [KetQuaController::class, 'create'])->name('thongke.ketquas.create');
+Route::post('/thongke/ketquas', [KetQuaController::class, 'store'])->name('thongke.ketquas.store');
+Route::get('/thongke/lop/{malop}/sinhvien', [LopController::class, 'danhSachSinhVien'])->name('lop.sinhvien');
+Route::get('/thongke/lop/{malop}/sinhvien/{id}', [KetQuaController::class, 'danhSachKetQua'])->name('thongke.ketquas');
+Route::get('/thongke/lop/{malop}/sinhvien/{id}/create', [KetQuaController::class, 'create'])->name('thongke.ketquas.create');

@@ -106,8 +106,8 @@
             <h3 class="text-center mb-4">ThuyLoi university</h3>
             <a href="{{route ('homepage')}}">Dashboard</a>
             <a href="{{route ('sinhviens.index')}}">Thông tin sinh viên</a>
-            <a href="#">Thống kê điểm</a>
-            <a href="#">Kỷ luật</a>
+            <a href="{{route ('thongke.index')}}">Thống kê điểm</a>
+            <a href="{{route ('kyluat.index')}}">Kỷ luật</a>
             <a href="{{ route('hocbong.index') }}">Khen thưởng</a>
             <a href="{{ route('hocphi.index') }}">Học phí</a>
         </div>

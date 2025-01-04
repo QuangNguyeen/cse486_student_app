@@ -7,7 +7,9 @@
     <title>@yield('title', 'Thuyloi University')</title>
     <!-- Thêm Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
         body {
             background-color: #f7f7f7;
         }
@@ -59,11 +61,11 @@
                 <mul class="list-unstyled menu-list">
                     <li><a href="{{route ('homepage')}}">Dashboard</a></li>
                     <li><a href="{{route ('sinhviens.index')}}">Thông tin sinh viên</a></li>
-                    <li><a href="#">Thống kê điểm</a></li>
+                    <li><a href="{{route ('thongke.index')}}">Thống kê điểm</a></li>
                     <li><a href="{{ route('kyluat.index') }}">Kỷ luật</a></li>
                     <li><a href="{{ route('hocbong.index') }}">Khen Thưởng</a></li> <!-- Thêm dòng này -->
                     <li><a href="{{ route('hocphi.index') }}">Học phí</a></li>
-
+                    <li><a href="{{ route('totnghiep') }}">Tốt nghiệp</a></li>
                 </mul>
             </nav>
         </div>
@@ -73,7 +75,7 @@
             @yield('content')
         </div>
     </div>
-
+    @stack('scripts')
     <!-- Thêm Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

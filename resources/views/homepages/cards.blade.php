@@ -14,14 +14,14 @@
         </a>
     </div>
     <div class="carditem">
-        <a href="" class="text-decoration-none">
+        <a href="{{route ('thongke.index')}}" class="text-decoration-none">
             <div class="card card-hover">
                 <p class="card-title">Thống kê điểm</p>
             </div>
         </a>
     </div>
     <div class="carditem">
-        <a href="" class="text-decoration-none">
+        <a href="{{route ('kyluat.index')}}" class="text-decoration-none">
             <div class="card card-hover">
                 <p class="card-title">Kỷ luật</p>
             </div>
