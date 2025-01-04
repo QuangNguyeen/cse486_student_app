@@ -35,6 +35,12 @@ Route::get('/hocphi/tinh', [HocPhiController::class, 'tinhHocPhi'])->name('hocph
 //học bổng
 Route::get('/hocbong', [HocBongController::class, 'index']) ->name('hocbong.index');;
 Route::get('/api/hocbong', [HocBongController::class, 'getThongKe']); 
+//thong ke hoc bong theo ky hoc
+
+Route::get('/statistical', function () {
+    return view('/hocbongs.statistical');
+})->name('statistical.index');
+Route::get('/api/statistical', [HocBongController::class, 'getThongKeAll'])->name('hocbong.statistical');
 
 
 
@@ -47,9 +53,7 @@ Route::get('/', function () {
 
 //kyluat 
 
-// Route::get('/kyluat', function () {
-//     return view('/kyluats.index');
-// })->name('kyluat');
+
 
 
 
