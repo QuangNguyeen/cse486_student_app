@@ -22,8 +22,8 @@ Route::get('/sinhvien/{id}', [SinhVienController::class, 'show'])->name('sinhvie
 Route::get('/api/sinhvien', [SinhVienController::class, 'updateStatus'])->name('sinhvien.trangthai');
 
 //thêm sinh viên 
-Route::get('/sinhviens/create', [SinhVienController::class, 'create'])->name('sinhvien.create');
-Route::post('/sinhviens', [KetQuaController::class, 'store'])->name('sinhviens.store');
+Route::get('/sinhviens/create', [SinhVienController::class, 'create'])->name('sinhviens.create');
+Route::post('/sinhvien', [SinhVienController::class, 'store'])->name('sinhviens.store');
 
 
 

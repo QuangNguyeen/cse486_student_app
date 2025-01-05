@@ -102,7 +102,7 @@ class SinhVienController extends Controller
     public function store(Request $request)
 {
     $request->validate([
-        'MASV' => 'required|string|max:10|unique:sinh_vien',
+        'MASV' => 'required|string|max:10|unique:SINHVIEN',
         'HOSV' => 'required|string|max:255',
         'TENSV' => 'required|string|max:255',
         'MALOP' => 'required|string|max:255',
