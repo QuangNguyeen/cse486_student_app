@@ -176,7 +176,96 @@
         .btn-nhap-diem:hover {
             background-color: #003f9a;
         }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            /* Màu nền trang */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
 
+        .row {
+            display: flex;
+        }
+
+        .col-md-3 {
+            background-color: #343a40;
+            /* Sidebar màu tối */
+            color: white;
+            min-height: 100vh;
+            /* Sidebar kéo dài toàn màn hình */
+            padding: 20px;
+        }
+
+        .col-md-3 a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .col-md-3 a:hover {
+            background-color: #495057;
+        }
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            /* Khoảng cách giữa các thẻ card */
+            justify-content: center;
+            /* Căn giữa các card */
+        }
+
+        .carditem {
+            flex: 1 0 calc(33.33% - 30px);
+            /* Định dạng mỗi carditem chiếm 1/3 hàng */
+            max-width: calc(33.33% - 30px);
+            margin: 15px;
+            background-color: #fff;
+            /* Màu nền trắng */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Đổ bóng nhẹ */
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .carditem:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            /* Hiệu ứng nổi lên khi hover */
+        }
+
+        .card {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            text-decoration: none;
+            /* Hiệu ứng gradient */
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            border-radius: 10px 10px 0 0;
+            /* Bo tròn chỉ trên đầu */
+        }
+
+        .card-title {
+            font-size: 30px;
+            text-align: center;
+            font-weight: bold;
+            text-decoration: none;
+        }
 
     </style>
 </head>
@@ -184,11 +273,11 @@
 <!-- Sidebar -->
 <div class="sidebar">
     <h1>Thuyloi University</h1>
-    <a href="#" class="menu-item">
+    <a href="{{route ('homepage')}}" class="menu-item">
         <i class="fas fa-home"></i>
         <span>Trang chủ</span>
     </a>
-    <a href="#" class="menu-item">
+    <a href="{{route ('sinhviens.index')}}" class="menu-item">
         <i class="fas fa-user"></i>
         <span>Thông tin sinh viên</span>
     </a>
@@ -196,15 +285,15 @@
         <i class="fas fa-chart-bar"></i>
         <span>Thống kê điểm</span>
     </a>
-    <a href="#" class="menu-item">
+    <a href="{{route ('kyluat.index')}}" class="menu-item">
         <i class="fas fa-graduation-cap"></i>
         <span>Kỷ luật</span>
     </a>
-    <a href="#" class="menu-item">
+    <a href="{{ route('hocbong.index') }}" class="menu-item">
         <i class="fas fa-award"></i>
         <span>Khen thưởng</span>
     </a>
-    <a href="#" class="menu-item">
+    <a href="{{ route('hocphi.index') }}" class="menu-item">
         <i class="fas fa-dollar-sign"></i>
         <span>Học phí</span>
     </a>
@@ -213,7 +302,6 @@
         <span>Cài đặt</span>
     </a>
 </div>
-
 <!-- Content -->
 <div class="content">
     @yield('content')
