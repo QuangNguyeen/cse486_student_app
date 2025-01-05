@@ -14,16 +14,17 @@ use App\Http\Controllers\TotNghiepController;
 
 //thông tin sinh viên 
 Route::get('/sinhvien', [SinhVienController::class, 'index'])->name('sinhviens.index');
-
 Route::delete('/sinhvien/{id}', [SinhVienController::class, 'destroy'])->name('sinhviens.destroy');
-
 Route::get('/sinhvien/{id}/edit', [SinhVienController::class, 'edit'])->name('sinhviens.edit');
 Route::put('/sinhvien/{id}', [SinhVienController::class, 'update'])->name('sinhviens.update');
-
-
 Route::get('/sinhvien/{id}', [SinhVienController::class, 'show'])->name('sinhviens.show');
 //cap nhat trang thai sinh vien
 Route::get('/api/sinhvien', [SinhVienController::class, 'updateStatus'])->name('sinhvien.trangthai');
+
+//thêm sinh viên 
+Route::get('/sinhviens/create', [SinhVienController::class, 'create'])->name('sinhvien.create');
+Route::post('/sinhviens', [KetQuaController::class, 'store'])->name('sinhviens.store');
+
 
 
 //học phí

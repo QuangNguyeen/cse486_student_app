@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\SinhVien;
 use App\Models\HocPhi;
 use App\Models\Ketqua;
+use App\Models\Lop;
 use Illuminate\Support\Facades\DB;
 
 class SinhVienController extends Controller
@@ -92,5 +93,26 @@ class SinhVienController extends Controller
         return redirect()->route('sinhviens.index')->with('success', 'Cập nhật trạng thái sinh viên thành công!');
     }
 
-    
+    public function create()
+    {
+        $classes = Lop::all();
+        return view('sinhviens.create',compact('classes'));
+    }
+
+    public function store(Request $request)
+{
+    $request->validate([
+        'MASV' => 'required|string|max:10|unique:sinh_vien',
+        'HOSV' => 'required|string|max:255',
+        'TENSV' => 'required|string|max:255',
+        'MALOP' => 'required|string|max:255',
+        'GIOITINH' => 'nullable|string|max:255',
+        'DIACHI' => 'nullable|string|max:255',
+        'SDT' => 'nullable|string|max:255'
+    ]);
+
+    SinhVien::create($request->all());
+
+    return redirect()->route('sinhviens.index')->with('success', 'Thêm sinh viên mới thành công!');
+}
 }

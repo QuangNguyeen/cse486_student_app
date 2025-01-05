@@ -77,7 +77,7 @@
 <h1>Thống kê sinh viên tốt nghiệp theo kỳ học</h1>
 <form id="hocbong-form">
     <label for="kyHoc">Kỳ Học:</label>
-    <input type="text" id="kyHoc" name="kyHoc" required placeholder="VD: 2023A">
+    <input type="text" id="kyHoc" name="kyHoc" required placeholder="VD: 2-2023/2024">
     <button type="submit" class="btn btn-secondary">Thống kê</button>
 </form>
 
@@ -126,9 +126,7 @@
                             resultTable.append(`
                                 <tr>
                                     <td>${sinhVien.MaSV}</td>
-                                    <td>${sinhVien.HoTen}</td>
-                                 
-                        
+                                    <td>${sinhVien.HoTen}</td>                                
                                 </tr>
                             `);
                         });

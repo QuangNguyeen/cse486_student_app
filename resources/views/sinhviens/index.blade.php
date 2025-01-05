@@ -10,7 +10,7 @@
         <a href="{{ route('sinhvien.trangthai') }}" class="btn btn-primary">
             Cập nhật trạng thái sinh viên
         </a>
-        <a href="{{ route('sinhvien.trangthai') }}" class="btn btn-success">
+        <a href="{{ route('sinhviens.create') }}" class="btn btn-success">
            Thêm
         </a>
         </div>
